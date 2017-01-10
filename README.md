@@ -1,3 +1,3 @@
-# DataStructures101
+# Algorithms
 
 Introduction to Basic Data Structures
