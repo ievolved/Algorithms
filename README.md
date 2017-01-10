@@ -1,3 +1,3 @@
 # Algorithms
 
-Introduction to Basic Data Structures
+Introduction to Algorithms.
