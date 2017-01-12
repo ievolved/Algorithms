@@ -9,12 +9,12 @@ var HashTable = function() {
 
 // Algorithm of an insert
 //
-//  Compute numeric hash of the key
-//  Attempt to get bucket
+//  Compute numeric hash of the key into index
+//  Attempt to get bucket based on index
 //  was it previously created?
 //    No?  Create one
 //    yes?  Use it
-//  Any conflicting values in the bucket?
+//  Any conflicting values in the bucket? based on key
 //    No?  Insert value
 //    Yes?  Override value
 //  Resize the storage if necessary (advanced)
@@ -42,10 +42,10 @@ HashTable.prototype.insert = function(key, value) {
 
 // Algorithm of a remove
 //
-//  Compute numeric hash of the key
-//  does numeric key exist in bucket?
+//  Compute numeric hash of the key into index
+//  does numeric key exist in bucket? based on index
 //    No?  Do nothing
-//  does value exist in values?
+//  does value exist in values? based on key
 //    No?  Do nothing
 //    Yes?  remove it, return old value
 //
@@ -58,10 +58,10 @@ HashTable.prototype.remove = function(key) {
 
 // Algorithm of a retrieve
 //
-//  Compute numeric hash of the key
-//  does numeric key exist in bucket?
+//  Compute numeric hash of the key into index
+//  does numeric key exist in bucket? based on index
 //    No?  Do nothing
-//  does value exist in values?
+//  does value exist in values? based on key
 //    No?  Do nothing
 //    Yes?  return value
 //
@@ -105,11 +105,6 @@ HashTable.prototype.retrieveAll = function() {
   console.log(this._storage);
   //console.log(this._limit);
 };
-
-
-
-
-
 
 /******************************TESTS*******************************/
 
