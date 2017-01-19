@@ -20,8 +20,6 @@ var HashTable = function() {
 //  Resize the storage if necessary (advanced)
 //
 HashTable.prototype.insert = function(key, value) {
-  //create an index for our storage location by passing it through our hashing function
-  //
   var index = this.hashFunc(key, this._limit);
 
   // retrieve the bucket at this particular index in our storage, if one exists
@@ -33,14 +31,9 @@ HashTable.prototype.insert = function(key, value) {
   //
   var bucket = this._storage[index]
 
-    // does a bucket exist or do we get undefined when trying to retrieve said index?
-    //
     ...
 
-    //now iterate through our bucket to see if there are any conflicting
-    //key value pairs within our bucket. If there are any, override them.
-    //
-    ...
+  return this;
 };
 
 
