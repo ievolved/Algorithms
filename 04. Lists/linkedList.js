@@ -7,7 +7,9 @@
 // [ ] .find() function to return first node containing the value indicated
 // [ ] .contains() function to return true/false whether the value exists
 //
-
+// [ ] Write a function to return the average of all even values in a Linked List that contains integer
+//      data only.
+//
 var LinkedListNode = function(data, next) {
   this.data = data;
   this.next = next;
@@ -43,3 +45,4 @@ LinkedList.prototype.find = function(value) {
 LinkedList.prototype.contains = function(value) {
   // ...
 };
+

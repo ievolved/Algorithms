@@ -12,6 +12,8 @@
 // [ ] .get() function to return value at index
 // [ ] .set() function to set value at index
 //
+// [ ] .contains() function to return true/false whether a given value exists in the Vector
+//
 var Vector = function(initialCapacity, maxCapacity) {
   this.storage = ...;
   this.capacity = initialcapacity || 16;  // Default to array size 16
@@ -40,3 +42,19 @@ Vector.prototype.set = function(index, value) {
   // ...
 };
 
+
+
+var v = new Vector();
+v.add(1);
+v.add(2);
+v.add(3);
+console.log("v.length: " + (v.length === 3));
+v.add(4);
+v.add(5);
+v.insert(2, 10);
+console.log("v.length: " + (v.length === 6));
+console.log("v.get(2): " + (v.get(2) === 10));
+v.set(2, 15);
+console.log("v.set(2, 15): " + (v.get(2) === 15));
+v.remove(2);
+console.log("v.remove(2): " + (v.length === 5));

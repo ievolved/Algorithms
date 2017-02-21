@@ -46,13 +46,24 @@ if(!Array.prototype.equals) {
   Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 }
 //
-// Ignore that fuction
+// Ignore that function
 
 
 // Arrays are efficient for random access.  They are also the most common data structure,
 //  being built into nearly every programming language.  The following exercises should
 //  serve as a glorious warm-up to the next few topics.
 //
+
+// [ ] Fill any array with value, zero if none provided, return original array
+// [ ] Return the sum of all values in any array
+// [ ] Return the average value of any array
+// [ ] Return the median of any array that has both an odd and even number of values
+// [ ] Return the index the value specified, or null if not found
+// [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
+//    [ ] Use only a single iteration
+// [ ] Select a range of values in any array, return the average of the values of the range
+//
+
 
 
 
@@ -102,7 +113,7 @@ console.log("median(a2): " + (median(a2) === 6));
 console.log("median(a3): " + (median(a3) === 13));
 
 
-// Return the index the value specified, or null if not found
+// [ ] Return the index the value specified, or null if not found
 //
 var a4 = ["zero", "one", "two", "three", "four", "five"];
 

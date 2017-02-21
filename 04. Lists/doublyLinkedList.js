@@ -5,7 +5,10 @@
 // [ ] .get() function to return data at position indicated
 // [ ] .set() function to change existing data at position indicated
 // [ ] .find() function to return first node containing the value indicated
-// [ ] .contains() function to return true/false whether the value exists
+// [ ] .contains() function to return the number of occurrences of a value in the list.  0 for none.
+//
+// [ ] Write a function using a doubly linked list to return the index of the nth odd number from the
+//      tail of the list.
 //
 // Extra Credit (for the brave and true)
 //
