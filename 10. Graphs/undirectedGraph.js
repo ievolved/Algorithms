@@ -8,7 +8,7 @@
 //  [ ] .containsEdge() returns whether two nodes are connected
 //  [ ] .addEdge() creates a connection between two existing nodes
 //  [ ] .removeEdge() removes the connection between two nodes
-//  [ ] .printEdges() prints the contents of the graph
+//  [ ] .printGraph() prints the contents of the graph
 //
 //  [ ] What is the Big-O time complexity of each function?
 //
@@ -27,18 +27,18 @@ function Graph() {
   this.node_list = [];
 }
 
-function Node(name) {
+function Node(value) {
   this.edge_list = [];
-  this.name = name;
+  this.value = value;
 }
 
 
 
 
-Array.prototype.contains = function(name) {
+Array.prototype.contains = function(value) {
   var i = this.length;
   while (i--) {
-    if (this[i].name === name) {
+    if (this[i].value === value) {
       return true;
     }
   }
@@ -52,15 +52,15 @@ Node.prototype.addEdge = function(end) {
 
 
 
-Graph.prototype.containsNode = function(node) {
+Graph.prototype.containsNode = function(value) {
   ...
 };
 
-Graph.prototype.addNode = function(node) {
+Graph.prototype.addNode = function(value) {
   ...
 };
 
-Graph.prototype.removeNode = function(node) {
+Graph.prototype.removeNode = function(value) {
   ...
 };
 
@@ -80,7 +80,7 @@ Graph.prototype.removeEdge = function(start, end) {
 };
 
 
-Graph.prototype.printNodes = function() {
+Graph.prototype.printGraph = function() {
   ...
 };
 
@@ -112,5 +112,5 @@ graph.removeNode("up");
 graph.containsEdge("start", "end");
 graph.containsEdge("alpha", "omega");
 
-graph.printNodes();
+graph.printGraph();
 
