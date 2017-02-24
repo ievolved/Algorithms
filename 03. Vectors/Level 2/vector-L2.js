@@ -54,23 +54,23 @@
 //  details necessary to learn the self-adjusting array concept.
 //
 // Your new objective is to re-implement the .add(), .insert(), and .remove() functions from scratch,
-//  without using any build-in functions, while also maintaining an accurate length.  In this file,
-//  we've partially implemented a .resize() function.  You'll also change it to either increase the
-//  storage capacity, or decrease it depending on the operation.  This contains our solution to the
-//  L1 challenge, complete with all tests passing.
+//  without using any build-in functions.  You can use your previous implementation as reference.
+//  We've partially implemented a .resize() function.  You'll also change it to either increase the
+//  storage capacity, or decrease it depending on the operation.
 //
-//   [ ] .resize() function to expand/reduce when needed.  HINT: Use this.length to decide whether to
-//         increase or decrease capacity.  Either double, or halve, as-needed.
+//   [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
+//         to increase or decrease capacity.  Either double, or halve, as-needed.
 //   [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
 //   [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
 //   [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
 //
 // NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: Don't use any built-in functions in your own code.
+// NOTE: There shouldn't be any built-in functions in when completed
 //
 // BONUS: Only complete this after the others.
 //
-//   [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe the differences.
+//   [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
+//         the differences.
 //   [ ] Add a couple more items, and log them again and observe.
 //   [ ] Remove a few until (capacity - 3).  Log them again and observe.
 //   [ ] Explain why they do not match.
@@ -87,30 +87,17 @@ var Vector = function(initialCapacity, maxCapacity) {
 
 
 Vector.prototype.insert = function(index, value) {
-  this.storage.splice(index, 0, value);
-  this.length++;
+  // ...
 };
 
 
 Vector.prototype.add = function(value) {
-  if (this.length + 1 === this.capacity) {
-    this.capacity *= 2;
-    this.resize(this.capacity);
-  }
-
-  this.storage[this.length++] = value;
+  // ...
 };
 
 
 Vector.prototype.remove = function(index) {
-  if (index === undefined || index === null) {
-    delete this.storage[this.length];
-  }
-  else {
-    this.storage.splice(index, 1);
-  }
-
-  this.length--;
+  // ...
 };
 
 
@@ -124,8 +111,9 @@ Vector.prototype.set = function(index, value) {
 };
 
 
-Vector.prototype.resize = function(newSize) {
-  var tempStorage = new Array(newSize);
+Vector.prototype.resize = function() {
+  this.capacity *= 2;
+  var tempStorage = new Array(this.capacity);
 
   for (var i=0; i<this.storage.length; i++) {
     tempStorage[i] = this.storage[i];
@@ -203,3 +191,12 @@ v.remove(0);
 console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
 console.log("  v.length should be 6: " + (v.length === 6));
 console.log("  v.capacity should be 16: " + (v.capacity === 16));
+
+console.log("Remove all but 2");
+v.remove();
+v.remove();
+v.remove();
+v.remove();
+console.log("  v.toArray() should be [1, 3]: " + (v.toArray().equals([1, 3])));
+console.log("  v.length should be 2: " + (v.length === 2));
+console.log("  v.capacity should be 8: " + (v.capacity === 8));
