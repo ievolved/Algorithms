@@ -1,52 +1,52 @@
 
 
-// Ignore this function
-//
-if(!Array.prototype.equals) {
-
-  // attach the .equals method to Array's prototype to call it on any array
-  //
-  Array.prototype.equals = function (array) {
-
-    // if the other array is a falsy value, return
-    //
-    if (!array) {
-      return false;
-    }
-
-    // compare lengths - can save a lot of time
-    //
-    if (this.length != array.length) {
-      return false;
-    }
-
-    for (var i = 0, l = this.length; i < l; i++) {
-
-      // Check if we have nested arrays
-      //
-      if (this[i] instanceof Array && array[i] instanceof Array) {
-
-        // recurse into the nested arrays
+        // Ignore this function
         //
-        if (!this[i].equals(array[i])) {
-          return false;
+        if(!Array.prototype.equals) {
+
+          // attach the .equals method to Array's prototype to call it on any array
+          //
+          Array.prototype.equals = function (array) {
+
+            // if the other array is a falsy value, return
+            //
+            if (!array) {
+              return false;
+            }
+
+            // compare lengths - can save a lot of time
+            //
+            if (this.length != array.length) {
+              return false;
+            }
+
+            for (var i = 0, l = this.length; i < l; i++) {
+
+              // Check if we have nested arrays
+              //
+              if (this[i] instanceof Array && array[i] instanceof Array) {
+
+                // recurse into the nested arrays
+                //
+                if (!this[i].equals(array[i])) {
+                  return false;
+                }
+              }
+              else if (this[i] != array[i]) {
+                // Warning - two different object instances will never be equal: {x:20} != {x:20}
+                //
+                return false;
+              }
+            }
+            return true;
+          };
+
+          // Hide method from for-in loops
+          //
+          Object.defineProperty(Array.prototype, "equals", {enumerable: false});
         }
-      }
-      else if (this[i] != array[i]) {
-        // Warning - two different object instances will never be equal: {x:20} != {x:20}
         //
-        return false;
-      }
-    }
-    return true;
-  };
-
-  // Hide method from for-in loops
-  //
-  Object.defineProperty(Array.prototype, "equals", {enumerable: false});
-}
-//
-// Ignore that function
+        // Ignore that function
 
 
 // Arrays are efficient for random access.  They are also the most common data structure,
@@ -62,6 +62,8 @@ if(!Array.prototype.equals) {
 // [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
 //    [ ] Use only a single iteration
 // [ ] Select a range of values in any array, return the average of the values of the range
+// [ ] Copy contents of one array to another.  Do not use any built-in functions.
+// [ ] Swap two elements in an array.  Return the same array passed in.  Do not use any built-in functions.
 //
 
 
@@ -130,7 +132,6 @@ var a5 = [4, 3, 8, 8, 6, 9, 10, 12, 10, 9, 0, 5, 16, 2];
 
 function findNthLastOdd(a, n) {
   // return nth last add
-  //
 }
 
 console.log("findNthLastOdd(a5, 1): " + (findNthLastOdd(a5, 1) === 11));
@@ -147,3 +148,28 @@ function getAverageOfRange(a, start, end) {
 }
 
 console.log("getAverageOfRange(a6, 5, 9): " + (getAverageOfRange(a6, 5, 9) === 21.4));
+
+
+// [ ] Copy contents of one array to another.  Do not use any built-in functions.
+//
+var a7 = [0, 10, 20, 30, 35, 55, 75, 100];
+var b7 = [];
+
+function copyArray(source, target) {
+  // return copy
+}
+
+console.log("copyArray(a7, b7): " + (a7.equals(b7)));
+
+
+
+// [ ] Swap two elements in an array.  Return the same array passed in.  Do not use any built-in functions.
+//
+var a8 = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37];
+
+function swap(a, indexSource, indexTarget) {
+  // swap 'em
+}
+
+console.log("swap(a8, 1, 11): " + (swap(a8, 1, 11).equals([1, 31, 3, 5, 7, 11, 13, 17, 19, 23, 29, 2, 37])));
+

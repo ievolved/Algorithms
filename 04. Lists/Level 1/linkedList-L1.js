@@ -1,4 +1,4 @@
-
+//
 // [ ] Implement LinkedList class
 // [ ] .insert() function to insert data at position (0 = Head, null = Tail, other = middle somewhere)
 // [ ] .remove() function to remove data at position (0 = Head, empty = Tail, other = middle somewhere)
