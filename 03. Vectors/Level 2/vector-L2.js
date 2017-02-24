@@ -78,10 +78,11 @@
 //
 
 var Vector = function(initialCapacity, maxCapacity) {
-  this.storage = [];
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
   this.max = maxCapacity || 1 << 5;       // Default max vector size to 32
   this.length = 0;
+
+  this.storage = new Array(this.capacity);
 };
 
 
@@ -141,7 +142,7 @@ console.log("Initialize");
 console.log("  v.length should be 0: " + (v.length === 0));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
 console.log("  v.max should be 32: " + (v.max === 32));
-console.log("  v.storage should be []: " + (v.storage.equals([])));
+console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
 
 console.log("Add 3");
 v.add(0);
