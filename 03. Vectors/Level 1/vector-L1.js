@@ -1,51 +1,51 @@
 
-        // Ignore this function
+// Ignore this function
+//
+if(!Array.prototype.equals) {
+
+  // attach the .equals method to Array's prototype to call it on any array
+  //
+  Array.prototype.equals = function (array) {
+
+    // if the other array is a falsy value, return
+    //
+    if (!array) {
+      return false;
+    }
+
+    // compare lengths - can save a lot of time
+    //
+    if (this.length != array.length) {
+      return false;
+    }
+
+    for (var i = 0, l = this.length; i < l; i++) {
+
+      // Check if we have nested arrays
+      //
+      if (this[i] instanceof Array && array[i] instanceof Array) {
+
+        // recurse into the nested arrays
         //
-        if(!Array.prototype.equals) {
-
-          // attach the .equals method to Array's prototype to call it on any array
-          //
-          Array.prototype.equals = function (array) {
-
-            // if the other array is a falsy value, return
-            //
-            if (!array) {
-              return false;
-            }
-
-            // compare lengths - can save a lot of time
-            //
-            if (this.length != array.length) {
-              return false;
-            }
-
-            for (var i = 0, l = this.length; i < l; i++) {
-
-              // Check if we have nested arrays
-              //
-              if (this[i] instanceof Array && array[i] instanceof Array) {
-
-                // recurse into the nested arrays
-                //
-                if (!this[i].equals(array[i])) {
-                  return false;
-                }
-              }
-              else if (this[i] != array[i]) {
-                // Warning - two different object instances will never be equal: {x:20} != {x:20}
-                //
-                return false;
-              }
-            }
-            return true;
-          };
-
-          // Hide method from for-in loops
-          //
-          Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+        if (!this[i].equals(array[i])) {
+          return false;
         }
+      }
+      else if (this[i] != array[i]) {
+        // Warning - two different object instances will never be equal: {x:20} != {x:20}
         //
-        // Ignore that function
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Hide method from for-in loops
+  //
+  Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+}
+//
+// Ignore that function
 
 
 // A vector is a dynamic array that adjusts size when a certain threshold is met when adding or removing
@@ -67,6 +67,7 @@
 //   Set
 //   Multiset
 //   Collection
+//   ArrayList
 //
 // The code in this file is a partially implemented vector.  Your objective is to implement the resize
 //  functionality.  When the vector length has reached capacity, it must double in size.  Complete the
@@ -143,7 +144,7 @@ console.log("Initialize");
 console.log("  v.length should be 0: " + (v.length === 0));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
 console.log("  v.max should be 32: " + (v.max === 32));
-console.log("  v.storage should be []: " + (v.storage.equals([])));
+console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
 
 console.log("Add 3");
 v.add(0);
@@ -192,5 +193,15 @@ console.log("Remove the first");
 v.remove(0);
 console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
 console.log("  v.length should be 6: " + (v.length === 6));
-console.log("  v.capacity should be 16: " + (v.capacity === 16));
+console.log("  v.capacity should be 8: " + (v.capacity === 16));
+
+console.log("Insert one at the beginning");
+v.insert(0, 0);
+console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+
+console.log("Remove from beginning");
+v.remove(0);
+console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+
+
 
