@@ -80,7 +80,7 @@ if(!Array.prototype.equals) {
 //   [ ] .add(), .insert(), .remove() must adjust the length appropriately
 //
 // NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: Don't use any built-in functions (other than the ones that already exist)
+// NOTE: Some built-in functions are already used.  Do not use any in the code you add
 //
 var Vector = function(initialCapacity, maxCapacity) {
   this.storage = [];

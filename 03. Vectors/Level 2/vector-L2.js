@@ -60,7 +60,8 @@ if(!Array.prototype.equals) {
 //  storage capacity, or decrease it depending on the operation.
 //
 //   [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
-//         to increase or decrease capacity.  Either double, or halve, as-needed.
+//         to increase or decrease capacity.  Either double, or halve, as-needed.  Don't reduce lower
+//         than the min capacity.
 //   [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
 //   [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
 //   [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.

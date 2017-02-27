@@ -56,7 +56,7 @@ if(!Array.prototype.equals) {
 //  return an error of some kind indicating such.  Javascript will just return 'undefined'.  Using
 //  Javascript, we must check that index is within length but other languages will do that for you
 //  and raise an error if not.  AS AN ASIDE: the C/C++ language don't do range checking for you
-//  either.  Serious security problems happen that way (see: buffer overflow exploits) but Javascript
+//  either.  Serious security problems happen that way (Google: buffer overflow exploits) but Javascript
 //  won't expose any security issues over it like some other languages do.
 //
 // One advantage of creating an abstraction over an array isn't just simulating a dynamically resizing
