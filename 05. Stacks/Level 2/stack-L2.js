@@ -17,9 +17,9 @@
     [ ] Complete the implementation of a DoubleStack class
     [x] .storage property to hold the items on the stack using a standard array
     [ ] .push() function to push a value from the back
-    [ ] .pop() function to push a value from the back
+    [ ] .pop() function to pop a value from the back
     [ ] .pushFront() function to push a value from the front
-    [ ] .popFront() function to push a value from the front
+    [ ] .popFront() function to pop a value from the front
     [ ] .length property to return the total size used
 
   NOTE: Do not use any built-in features

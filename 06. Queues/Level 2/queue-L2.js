@@ -19,7 +19,7 @@
     [ ] .enqueue() function to queue up a value from the beginning
     [ ] .dequeue() function to dequeue a value from the beginning
     [ ] .push() function to queue a value from the end
-    [ ] .pop() function to queue a value from the end
+    [ ] .pop() function to dequeue a value from the end
     [ ] .length property to return the current length
 
   NOTE: Do not use any built-in features
