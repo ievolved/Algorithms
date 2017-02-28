@@ -83,7 +83,7 @@ if(!Array.prototype.equals) {
 
   NOTE: Do not create an object-oriented abstraction
   NOTE: Do not focus on edge cases or error conditions
-  NOTE: Satisfy all the test cases.  Do not rewrite any or comment them out
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out.
   NOTE: When passing a node into the functions, we usually would want to start with the first node
           in the known list -- this would be the head.  However, it can be any node.  That is
           because a Linked List is technically a node that points to another node.  Therefore we

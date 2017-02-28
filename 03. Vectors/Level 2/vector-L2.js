@@ -66,9 +66,6 @@ if(!Array.prototype.equals) {
 //   [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
 //   [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
 //
-// NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: There shouldn't be any built-in functions in when completed
-//
 // BONUS: Only complete this after the others.
 //
 //   [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
@@ -77,6 +74,10 @@ if(!Array.prototype.equals) {
 //   [ ] Remove a few until (capacity - 3).  Log them again and observe.
 //   [ ] Explain why they do not match.
 //      [ ] Explain why that is okay.
+//
+// NOTE: Don't worry about edge-cases, error checking, or bounds checking
+// NOTE: There shouldn't be any built-in functions in when completed
+// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
 //
 
 var Vector = function(initialCapacity, maxCapacity) {

@@ -93,6 +93,7 @@ if(!Array.prototype.equals) {
 //
 // NOTE: Don't use any built-in functions in your own code.
 // NOTE: You may use previous code from L2 as a reference.
+// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
 //
 
 var Vector = function(initialCapacity, maxCapacity) {

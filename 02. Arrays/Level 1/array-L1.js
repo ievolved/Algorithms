@@ -65,7 +65,8 @@ if(!Array.prototype.equals) {
 // [ ] Copy contents of one array to another.  Do not use any built-in functions.
 // [ ] Swap two elements in an array.  Return the same array passed in.  Do not use any built-in functions.
 //
-
+// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+//
 
 
 

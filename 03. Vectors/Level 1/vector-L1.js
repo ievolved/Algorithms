@@ -81,7 +81,9 @@ if(!Array.prototype.equals) {
 //
 // NOTE: Don't worry about edge-cases, error checking, or bounds checking
 // NOTE: Some built-in functions are already used.  Do not use any in the code you add
+// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
 //
+
 var Vector = function(initialCapacity, maxCapacity) {
   this.storage = [];
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
