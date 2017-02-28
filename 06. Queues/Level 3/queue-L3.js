@@ -1,12 +1,5 @@
 
 /*
-  In the previous challenge, L2, we implemented a dequeue.  Hopefully that got
-   blood flowing (not boiling).  It is certainly a challenging little implementation
-   for such a simple concept.  The bonus asked you to observe what happens after the
-   two sides meet in the middle, and keep growing.  Hopefully you didn't change any
-   code to change its behavior.  Using a static array can certainly show limitations.
-   It would be ideal to use a dynamic array.
-
   The previous challenge, L2, ask you to implement a dequeue.  You may have noticed
    strong similarities between the double stack and dequeue.  About the only notable
    difference is whether you return the newest or oldest item placed in storage.  We
