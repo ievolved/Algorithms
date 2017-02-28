@@ -49,25 +49,25 @@ if(!Array.prototype.equals) {
 // Ignore that function
 
 
-// Arrays are efficient for random access.  They are also the most common data structure,
-//  being built into nearly every programming language.  The following exercises should
-//  serve as a glorious warm-up to the next few topics.
-//
+/*
+  Arrays are efficient for random access.  They are also the most common data structure,
+   being built into nearly every programming language.  The following exercises should
+   serve as a glorious warm-up to the next few topics.
 
-// [ ] Fill any array with value, zero if none provided, return original array
-// [ ] Return the sum of all values in any array
-// [ ] Return the average value of any array
-// [ ] Return the median of any array that has both an odd and even number of values
-// [ ] Return the index the value specified, or null if not found
-// [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
-//    [ ] Use only a single iteration
-// [ ] Select a range of values in any array, return the average of the values of the range
-// [ ] Copy contents of one array to another.  Do not use any built-in functions.
-// [ ] Swap two elements in an array.  Return the same array passed in.  Do not use any built-in functions.
-//
-// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
-//
+    [ ] Fill any array with value, zero if none provided, return original array
+    [ ] Return the sum of all values in any array
+    [ ] Return the average value of any array
+    [ ] Return the median of any array that has both an odd and even number of values
+    [ ] Return the index the value specified, or null if not found
+    [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
+      [ ] Use only a single iteration
+    [ ] Select a range of values in any array, return the average of the values of the range
+    [ ] Copy contents of one array to another.  Do not use any built-in functions.
+    [ ] Swap two elements in an array.  Return the same array passed in.  Do not use any built-in functions.
 
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+
+*/
 
 
 // [ ] Fill any array with value, zero if none provided, return original array

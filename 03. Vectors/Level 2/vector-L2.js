@@ -48,37 +48,39 @@ if(!Array.prototype.equals) {
 // Ignore that function
 
 
-// Previously, in L1 you enhanced a partially written vector to resize and maintain an accurate length.
-//  You may have noticed that the .add(), .insert(), and .remove() functions used built-in functions
-//  to add and remove data to the storage array, even though you were asked not to use any built-in
-//  functions yourself.  That is okay, it was done that way to help you focus only on the critical
-//  details necessary to learn the self-adjusting array concept.
-//
-// Your new objective is to re-implement the .add(), .insert(), and .remove() functions from scratch,
-//  without using any build-in functions.  You can use your previous implementation as reference.
-//  We've partially implemented a .resize() function.  You'll also change it to either increase the
-//  storage capacity, or decrease it depending on the operation.
-//
-//   [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
-//         to increase or decrease capacity.  Either double, or halve, as-needed.  Don't reduce lower
-//         than the min capacity.
-//   [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
-//   [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
-//   [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
-//
-// BONUS: Only complete this after the others.
-//
-//   [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
-//         the differences.
-//   [ ] Add a couple more items, and log them again and observe.
-//   [ ] Remove a few until (capacity - 3).  Log them again and observe.
-//   [ ] Be able to explain why they do not match.
-//      [ ] Be able to explain why that is okay.
-//
-// NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: There shouldn't be any built-in functions in when completed
-// NOTE: Satisfy all the tests.  Do not modify or comment of them out
-//
+/*
+  Previously, in L1 you enhanced a partially written vector to resize and maintain an accurate length.
+   You may have noticed that the .add(), .insert(), and .remove() functions used built-in functions
+   to add and remove data to the storage array, even though you were asked not to use any built-in
+   functions yourself.  That is okay, it was done that way to help you focus only on the critical
+   details necessary to learn the self-adjusting array concept.
+
+  Your new objective is to re-implement the .add(), .insert(), and .remove() functions from scratch,
+   without using any build-in functions.  You can use your previous implementation as reference.
+   We've partially implemented a .resize() function.  You'll also change it to either increase the
+   storage capacity, or decrease it depending on the operation.
+
+    [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
+          to increase or decrease capacity.  Either double, or halve, as-needed.  Don't reduce lower
+          than the min capacity.
+    [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
+    [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
+    [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
+
+  BONUS: Only complete this after the others.
+
+    [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
+          the differences.
+    [ ] Add a couple more items, and log them again and observe.
+    [ ] Remove a few until (capacity - 3).  Log them again and observe.
+    [ ] Be able to explain why they do not match.
+    [ ] Be able to explain why that is okay.
+
+  NOTE: Don't worry about edge-cases, error checking, or bounds checking
+  NOTE: There shouldn't be any built-in functions in when completed
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out
+
+*/
 
 var Vector = function(initialCapacity, maxCapacity) {
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements

@@ -48,41 +48,43 @@ if(!Array.prototype.equals) {
 // Ignore that function
 
 
-// A vector is a dynamic array that adjusts size when a certain threshold is met when adding or removing
-//  items.  It is essentially a _collection_ that behaves somewhat like an array.  There are some
-//  some differences.  Arrays always allocate enough memory to hold enough elements to fill the full
-//  capacity.  Then allow random access anywhere within that range at any time.
-//
-// Collections are different.  They are not technically an array though they may or may not use one as a
-//   storage mechanism behind the scenes.  They allow you to append new items to the end, insert new items
-//   anywhere near items that have already been inserted, and allow random access anywhere within that
-//   range.
-//
-// Collections are dynamic arrays and go by different names and may have slightly different nuanced
-//  behaviors between them but they are essentially the same idea.
-//
-//   Dynamic Array    // A self-adjusting array
-//   Vector           // Not to be confused with a 2D/3D graphics vector
-//   List             // Not to be confused with a LinkedList
-//   Set
-//   Multiset
-//   Collection
-//   ArrayList
-//
-// The code in this file is a partially implemented vector.  Your objective is to implement the resize
-//  functionality.  When the vector length has reached capacity, it must double in size.  Complete the
-//  following tasks:
-//
-//   [ ] .resize() function to expand when needed
-//   [ ] .add() function to expand when needed
-//   [ ] .insert() function to expand when needed
-//
-//   [ ] .add(), .insert(), .remove() must adjust the length appropriately
-//
-// NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: Some built-in functions are already used.  Do not use any in the code you add
-// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
-//
+/*
+  A vector is a dynamic array that adjusts size when a certain threshold is met when adding or removing
+   items.  It is essentially a _collection_ that behaves somewhat like an array.  There are some
+   some differences.  Arrays always allocate enough memory to hold enough elements to fill the full
+   capacity.  Then allow random access anywhere within that range at any time.
+
+  Collections are different.  They are not technically an array though they may or may not use one as a
+   storage mechanism behind the scenes.  They allow you to append new items to the end, insert new items
+   anywhere near items that have already been inserted, and allow random access anywhere within that
+   range.
+
+  Collections are dynamic arrays and go by different names and may have slightly different nuanced
+   behaviors between them but they are essentially the same idea.
+
+    Dynamic Array    // A self-adjusting array
+    Vector           // Not to be confused with a 2D/3D graphics vector
+    List             // Not to be confused with a LinkedList
+    Set
+    Multiset
+    Collection
+    ArrayList
+
+  The code in this file is a partially implemented vector.  Your objective is to implement the resize
+   functionality.  When the vector length has reached capacity, it must double in size.  Complete the
+   following tasks:
+
+    [ ] .resize() function to expand when needed
+    [ ] .add() function to expand when needed
+    [ ] .insert() function to expand when needed
+
+    [ ] .add(), .insert(), .remove() must adjust the length appropriately
+
+  NOTE: Don't worry about edge-cases, error checking, or bounds checking
+  NOTE: Some built-in functions are already used.  Do not use any in the code you add
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+
+*/
 
 var Vector = function(initialCapacity, maxCapacity) {
   this.storage = [];

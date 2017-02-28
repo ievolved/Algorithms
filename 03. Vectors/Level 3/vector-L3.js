@@ -48,53 +48,54 @@ if(!Array.prototype.equals) {
 // Ignore that function
 
 
-// Previously in L2, you re-implemented the vector not using any built-in functions, and if you did
-//  the bonus, got a good sense of how the internal memory representation may not always reflect the
-//  same view that client using it has.  It's one challenge to understand and write the algorithm
-//  itself, but we value correctness and consistency as much as we do performance.  If any code attempts
-//  to access an array index larger than the length an error condition happens.  Most languages will
-//  return an error of some kind indicating such.  Javascript will just return 'undefined'.  Using
-//  Javascript, we must check that index is within length but other languages will do that for you
-//  and raise an error if not.  AS AN ASIDE: the C/C++ language don't do range checking for you
-//  either.  Serious security problems happen that way (Google: buffer overflow exploits) but Javascript
-//  won't expose any security issues over it like some other languages do.
-//
-// One advantage of creating an abstraction over an array isn't just simulating a dynamically resizing
-//  array, but also we can add safety to an unsafe idea.  It's natural to account for the conditions
-//  that happen around the first item and ones after.  When thinking about corner cases and edge cases
-//  we might usually consider the conditions around the first item, last item, and anything between.
-//  To have any real confidence, we need to go beyond that and check for the cases when the structure
-//  is empty, or what happens if we attempt to access anything before the first valid position or the
-//  last valid position.
-//
-// Your objective is to add bounds checking to the various vector operations.  At no point should an
-//  out of bounds index operation succeed, nor should the vector resize beyond the max value.
-//
-// Warm-Up
-//
-//   [ ] Understand why storage and .toArray() might show different views of the array (see L2 bonus)
-//   [ ] Declare a javascript array.  Log an index that is less than zero, or more than length.  What
-//         happens?  Why?
-//
-// Objectives
-//
-//   [ ] Throw an exception when attempting to use a index that is out of any valid range
-//   [ ] Throw an exception when a resize would result in capacity that exceeds max.  HINT: Be familiar
-//         with Javascript try...catch...finally /  throw usage
-//
-// Bonus
-//
-//   [ ] .find() function to return the index (or null) of the value provided
-//   [ ] .contains() function to return true/false whether the item exists.  HINT:  See if you can find
-//         a clever way to re-use existing functions here.
-//   [ ] The bounds check should have caught any access to invalid index positions.  Some test cases were
-//         written to check for that.  Some are missing.  Can you find which ones?  Add them in.
-//
-//
-// NOTE: Don't use any built-in functions in your own code.
-// NOTE: You may use previous code from L2 as a reference.
-// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
-//
+/*
+  Previously in L2, you re-implemented the vector not using any built-in functions, and if you did
+   the bonus, got a good sense of how the internal memory representation may not always reflect the
+   same view that client using it has.  It's one challenge to understand and write the algorithm
+   itself, but we value correctness and consistency as much as we do performance.  If any code attempts
+   to access an array index larger than the length an error condition happens.  Most languages will
+   return an error of some kind indicating such.  Javascript will just return 'undefined'.  Using
+   Javascript, we must check that index is within bounds but other languages will do that for you
+   and raise an error if not.  AS AN ASIDE: the C/C++ language don't do range checking for you
+   either.  Serious security problems happen that way (Google: buffer overflow exploits) but Javascript
+   won't expose any security issues over it like some other languages do.
+
+  One advantage of creating an abstraction over an array isn't just simulating a dynamically resizing
+   array, but also we can add safety to an unsafe idea.  It's natural to account for the conditions
+   that happen around the first item and ones after.  When thinking about corner cases and edge cases
+   we might usually consider the conditions around the first item, last item, and anything between.
+   To have any real confidence, we need to go beyond that and check for the cases when the structure
+   is empty, or what happens if we attempt to access anything before the first valid position or the
+   last valid position.
+
+  Your objective is to add bounds checking to the various vector operations.  At no point should an
+   out of bounds index operation succeed, nor should the vector resize beyond the max value.
+
+  Warm-Up
+
+    [ ] Understand why storage and .toArray() might show different views of the array (see L2 bonus)
+    [ ] Declare a javascript array.  Log an index that is less than zero, or more than length.  What
+          happens?  Why?
+
+  Objectives
+
+    [ ] Throw an exception when attempting to use a index that is out of any valid range
+    [ ] Throw an exception when a resize would result in capacity that exceeds max.  HINT: Be familiar
+          with Javascript try...catch...finally /  throw usage
+
+  Bonus
+
+    [ ] .find() function to return the index (or null) of the value provided
+    [ ] .contains() function to return true/false whether the item exists.  HINT:  See if you can find
+          a clever way to re-use existing functions here.
+    [ ] The bounds check should have caught any access to invalid index positions.  Some test cases were
+          written to check for that.  Some are missing.  Can you find which ones?  Add them in.
+
+  NOTE: Don't use any built-in functions in your own code.
+  NOTE: You may use previous code from L2 as a reference.
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+
+*/
 
 var Vector = function(initialCapacity, maxCapacity) {
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
