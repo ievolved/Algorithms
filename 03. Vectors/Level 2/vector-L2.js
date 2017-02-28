@@ -72,12 +72,12 @@ if(!Array.prototype.equals) {
 //         the differences.
 //   [ ] Add a couple more items, and log them again and observe.
 //   [ ] Remove a few until (capacity - 3).  Log them again and observe.
-//   [ ] Explain why they do not match.
-//      [ ] Explain why that is okay.
+//   [ ] Be able to explain why they do not match.
+//      [ ] Be able to explain why that is okay.
 //
 // NOTE: Don't worry about edge-cases, error checking, or bounds checking
 // NOTE: There shouldn't be any built-in functions in when completed
-// NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+// NOTE: Satisfy all the tests.  Do not modify or comment of them out
 //
 
 var Vector = function(initialCapacity, maxCapacity) {
