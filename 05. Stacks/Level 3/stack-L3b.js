@@ -28,7 +28,11 @@
 
     [ ] .push property that returns the object { front: function()..., back: function() }
           to replace push() and pushFront().  It can be used like: stack.push.front(value),
-          or stack.pop.back(), etc.
+          or stack.push.back(), etc.
+
+    [ ] .pop property that returns the object { front: function()..., back: function() }
+          to replace pop() and popFront().  It can be used like: stack.pop.front(), or
+          stack.pop.back(), etc.
 
     [ ] .length property that returns the object { front: _, back: _, size: _} that returns
           the current length of the front stack, back stack, and total size.

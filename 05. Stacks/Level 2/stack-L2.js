@@ -28,7 +28,8 @@
   BONUS:
 
     [ ] Without changing any code for this, observe what happens when either of the front
-          or the back meets in the middle, and continues to grow.
+          or the back meets in the middle, and continues to grow.  You'll need to write
+          some code to trigger the conditions
 
 */
 
