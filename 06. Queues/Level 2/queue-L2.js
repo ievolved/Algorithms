@@ -1,34 +1,36 @@
 
 /*
+  The traditional Queue data structure allows you to add and remove items from only one
+   end of the storage -- the front.  This is sufficient for many problems that the queue
+   can solve.  Sometimes we might need two queues.  This is useful if you might have
+   different priority (higher and lower) data for the queue.  This structure is called
+   a Double-Ended Queue, or a dequeue (sometimes called a deque).
 
- Your objective is to implement a double-ended queue, also called a dequeue without using
-  any built-in features.
+  The values on each side of the storage grow towards the center and shrink away from it.
 
- Whereas the dequeue function of a queue is pronounced (de-queue), a dequeue data structure,
-  while spelled the same, is pronounced (deck).
+  Your objective is to implement a double-ended queue, also called a dequeue without using
+   any built-in features.
 
- [ ] Complete the implementation of a Deueue class
- [x] .storage property to hold the items on the queue using a standard array
- [ ] .enqueue() function to queue up a value from the beginning
- [ ] .dequeue() function to dequeue a value from the beginning
- [ ] .push() function to queue a value from the end
- [ ] .pop() function to queue a value from the end
- [ ] .length property to return the current length
+  Whereas the dequeue() function of a queue is pronounced (de-queue), a dequeue data structure,
+   while spelled the same, is pronounced (deck).
 
- NOTE: Do not use any built-in features
- NOTE: Do not focus on edge cases or error conditions
- NOTE: This will be similar to a Javascript array where .push() and .pop() have the same
-         functionality, but .enqueue() equates to Javascript .unshift() and .dequeue()
-         equates to .shift().  Different programming languages use various different names
-         for the same operations.  Be aware that the vocabulary surrounding double-ended
-         queues is inconsistent in the industry.  I chose to name the above functions
-         because it allows you to directly tie the operation purpose to the same metaphor
-         as the common stack and queue.
+    [ ] Complete the implementation of a Deueue class
+    [x] .storage property to hold the items on the queue using a standard array
+    [ ] .enqueue() function to queue up a value from the beginning
+    [ ] .dequeue() function to dequeue a value from the beginning
+    [ ] .push() function to queue a value from the end
+    [ ] .pop() function to queue a value from the end
+    [ ] .length property to return the current length
+
+  NOTE: Do not use any built-in features
+  NOTE: Do not focus on edge cases or error conditions
 
  */
 
-var Dequeue = function() {
-  this.storage = [];
+var Dequeue = function(initialCapacity) {
+  this.storage = new Array(initialCapacity || 16);
+  this.length = 0;
+  this.lengthFront = 0;
 };
 
 

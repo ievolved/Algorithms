@@ -34,7 +34,7 @@
 
   BONUS:
 
-    [ ] After completing the above, re-implement using a DoubleyLinkedList instead of
+    [ ] After completing the above, re-implement using a DoublyLinkedList instead of
           a dynamic array (or specialized vector).  Use the file stack-L3b.js
 
       [ ] Observe, was it easier?  More difficult?  Be able to explain why

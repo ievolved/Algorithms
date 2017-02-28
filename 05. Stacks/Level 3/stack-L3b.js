@@ -38,28 +38,6 @@
           the current length of the front stack, back stack, and total size.
 
   NOTE: Do not use any built-in features
+  NOTE: Start with a copy of your implementation from stack-L3.js
 
 */
-
-var DoubleStack = function(initialCapacity) {
-  this.storage = new DoublyLinkedList();
-  this.max = 1 << 5;                                // max = 32
-  this.length = 0;
-  this.lengthFront = 0;
-};
-
-DoubleStack.prototype.push = function(value) {
-  // ...
-};
-
-DoubleStack.prototype.pop = function() {
-  // ...
-};
-
-DoubleStack.prototype.pushFront = function(value) {
-  // ...
-};
-
-DoubleStack.prototype.popFront = function() {
-  // ...
-};
