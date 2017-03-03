@@ -109,6 +109,11 @@ Set.prototype.remove = function(value) {
 };
 
 
+Set.prototype.contains = function(value) {
+  // ...
+};
+
+
 Set.prototype.union = function(B) {
   // ...
 };
