@@ -16,7 +16,7 @@
     [ ] Maintain length.  Do not allow the number of insert to exceed capacity
     [ ] .add() function to insert an item into the Set if it doesn't already exist
     [ ] .remove() function to remove an item from the Set if it exists
-    [ ] .contains() function to return whether the value exists in the Set
+    [ ] .isMember() function to return whether the value exists in the Set
 
   NOTE: Do not use built-in functions to ease the pain
   NOTE: Do not allow duplicates in any one set.
@@ -40,6 +40,6 @@ Set.prototype.remove = function(value) {
 };
 
 
-Set.prototype.contains = function(value) {
+Set.prototype.isMember = function(value) {
   // ...
 };

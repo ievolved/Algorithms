@@ -79,14 +79,14 @@
     [ ] Implement Set object with static storage
     [ ] .add() function to add values
     [ ] .remove() function to remove values
-    [ ] .contains() function to check whether value exists
+    [ ] .isMember() function to check whether value exists
     [ ] .union() function to return A union B
     [ ] .intersect() function to return A intersect B
     [ ] .difference() function to return A diff B
     [ ] .subset() function to return Is A subset of B?
 
   NOTE: Do not use built-in functions to ease the pain
-  NOTE: While the above examples may appear to be ordered in some way, the true is that
+  NOTE: While the above examples may appear to be ordered in some way, the truth is that
           ordering does not matter with sets.  It is enough if the values exist or not.
   NOTE: Do not allow duplicates in any one set.
 
@@ -109,7 +109,7 @@ Set.prototype.remove = function(value) {
 };
 
 
-Set.prototype.contains = function(value) {
+Set.prototype.isMember = function(value) {
   // ...
 };
 
