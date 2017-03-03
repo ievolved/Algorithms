@@ -1,86 +1,91 @@
 
-        // Ignore this function
+// Ignore this function
+//
+if(!Array.prototype.equals) {
+
+  // attach the .equals method to Array's prototype to call it on any array
+  //
+  Array.prototype.equals = function (array) {
+
+    // if the other array is a falsy value, return
+    //
+    if (!array) {
+      return false;
+    }
+
+    // compare lengths - can save a lot of time
+    //
+    if (this.length != array.length) {
+      return false;
+    }
+
+    for (var i = 0, l = this.length; i < l; i++) {
+
+      // Check if we have nested arrays
+      //
+      if (this[i] instanceof Array && array[i] instanceof Array) {
+
+        // recurse into the nested arrays
         //
-        if(!Array.prototype.equals) {
-
-          // attach the .equals method to Array's prototype to call it on any array
-          //
-          Array.prototype.equals = function (array) {
-
-            // if the other array is a falsy value, return
-            //
-            if (!array) {
-              return false;
-            }
-
-            // compare lengths - can save a lot of time
-            //
-            if (this.length != array.length) {
-              return false;
-            }
-
-            for (var i = 0, l = this.length; i < l; i++) {
-
-              // Check if we have nested arrays
-              //
-              if (this[i] instanceof Array && array[i] instanceof Array) {
-
-                // recurse into the nested arrays
-                //
-                if (!this[i].equals(array[i])) {
-                  return false;
-                }
-              }
-              else if (this[i] != array[i]) {
-                // Warning - two different object instances will never be equal: {x:20} != {x:20}
-                //
-                return false;
-              }
-            }
-            return true;
-          };
-
-          // Hide method from for-in loops
-          //
-          Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+        if (!this[i].equals(array[i])) {
+          return false;
         }
+      }
+      else if (this[i] != array[i]) {
+        // Warning - two different object instances will never be equal: {x:20} != {x:20}
         //
-        // Ignore that function
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Hide method from for-in loops
+  //
+  Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+}
+//
+// Ignore that function
 
 
-// A vector is a dynamic array that adjusts size when a certain threshold is met when adding or removing
-//  items.  It is essentially a _collection_ that behaves somewhat like an array.  There are some
-//  some differences.  Arrays always allocate enough memory to hold enough elements to fill the full
-//  capacity.  Then allow random access anywhere within that range at any time.
-//
-// Collections are different.  They are not technically an array though they may or may not use one as a
-//   storage mechanism behind the scenes.  They allow you to append new items to the end, insert new items
-//   anywhere near items that have already been inserted, and allow random access anywhere within that
-//   range.
-//
-// Collections are dynamic arrays and go by different names and may have slightly different nuanced
-//  behaviors between them but they are essentially the same idea.
-//
-//   Dynamic Array    // A self-adjusting array
-//   Vector           // Not to be confused with a 2D/3D graphics vector
-//   List             // Not to be confused with a LinkedList
-//   Set
-//   Multiset
-//   Collection
-//
-// The code in this file is a partially implemented vector.  Your objective is to implement the resize
-//  functionality.  When the vector length has reached capacity, it must double in size.  Complete the
-//  following tasks:
-//
-//   [ ] .resize() function to expand when needed
-//   [ ] .add() function to expand when needed
-//   [ ] .insert() function to expand when needed
-//
-//   [ ] .add(), .insert(), .remove() must adjust the length appropriately
-//
-// NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: Don't use any built-in functions (other than the ones that already exist)
-//
+/*
+  A vector is a dynamic array that adjusts size when a certain threshold is met when adding or removing
+   items.  It is essentially a _collection_ that behaves somewhat like an array.  There are some
+   some differences.  Arrays always allocate enough memory to hold enough elements to fill the full
+   capacity.  Then allow random access anywhere within that range at any time.
+
+  Collections are different.  They are not technically an array though they may or may not use one as a
+   storage mechanism behind the scenes.  They allow you to append new items to the end, insert new items
+   anywhere near items that have already been inserted, and allow random access anywhere within that
+   range.
+
+  Collections are dynamic arrays and go by different names and may have slightly different nuanced
+   behaviors between them but they are essentially the same idea.
+
+    Dynamic Array    // A self-adjusting array
+    Vector           // Not to be confused with a 2D/3D graphics vector
+    List             // Not to be confused with a LinkedList
+    Set
+    Multiset
+    Collection
+    ArrayList
+
+  The code in this file is a partially implemented vector.  Your objective is to implement the resize
+   functionality.  When the vector length has reached capacity, it must double in size.  Complete the
+   following tasks:
+
+    [ ] .resize() function to expand when needed
+    [ ] .add() function to expand when needed
+    [ ] .insert() function to expand when needed
+
+    [ ] .add(), .insert(), .remove() must adjust the length appropriately
+
+  NOTE: Don't worry about edge-cases, error checking, or bounds checking
+  NOTE: Some built-in functions are already used.  Do not use any in the code you add
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out.
+
+*/
+
 var Vector = function(initialCapacity, maxCapacity) {
   this.storage = [];
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
@@ -143,7 +148,7 @@ console.log("Initialize");
 console.log("  v.length should be 0: " + (v.length === 0));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
 console.log("  v.max should be 32: " + (v.max === 32));
-console.log("  v.storage should be []: " + (v.storage.equals([])));
+console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
 
 console.log("Add 3");
 v.add(0);
@@ -192,5 +197,15 @@ console.log("Remove the first");
 v.remove(0);
 console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
 console.log("  v.length should be 6: " + (v.length === 6));
-console.log("  v.capacity should be 16: " + (v.capacity === 16));
+console.log("  v.capacity should be 8: " + (v.capacity === 16));
+
+console.log("Insert one at the beginning");
+v.insert(0, 0);
+console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+
+console.log("Remove from beginning");
+v.remove(0);
+console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+
+
 

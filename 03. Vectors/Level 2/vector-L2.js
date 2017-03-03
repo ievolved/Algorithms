@@ -1,87 +1,94 @@
 
-        // Ignore this function
+// Ignore this function
+//
+if(!Array.prototype.equals) {
+
+  // attach the .equals method to Array's prototype to call it on any array
+  //
+  Array.prototype.equals = function (array) {
+
+    // if the other array is a falsy value, return
+    //
+    if (!array) {
+      return false;
+    }
+
+    // compare lengths - can save a lot of time
+    //
+    if (this.length != array.length) {
+      return false;
+    }
+
+    for (var i = 0, l = this.length; i < l; i++) {
+
+      // Check if we have nested arrays
+      //
+      if (this[i] instanceof Array && array[i] instanceof Array) {
+
+        // recurse into the nested arrays
         //
-        if(!Array.prototype.equals) {
-
-          // attach the .equals method to Array's prototype to call it on any array
-          //
-          Array.prototype.equals = function (array) {
-
-            // if the other array is a falsy value, return
-            //
-            if (!array) {
-              return false;
-            }
-
-            // compare lengths - can save a lot of time
-            //
-            if (this.length != array.length) {
-              return false;
-            }
-
-            for (var i = 0, l = this.length; i < l; i++) {
-
-              // Check if we have nested arrays
-              //
-              if (this[i] instanceof Array && array[i] instanceof Array) {
-
-                // recurse into the nested arrays
-                //
-                if (!this[i].equals(array[i])) {
-                  return false;
-                }
-              }
-              else if (this[i] != array[i]) {
-                // Warning - two different object instances will never be equal: {x:20} != {x:20}
-                //
-                return false;
-              }
-            }
-            return true;
-          };
-
-          // Hide method from for-in loops
-          //
-          Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+        if (!this[i].equals(array[i])) {
+          return false;
         }
+      }
+      else if (this[i] != array[i]) {
+        // Warning - two different object instances will never be equal: {x:20} != {x:20}
         //
-        // Ignore that function
+        return false;
+      }
+    }
+    return true;
+  };
 
-// Previously, in L1 you enhanced a partially written vector to resize and maintain an accurate length.
-//  You may have noticed that the .add(), .insert(), and .remove() functions used built-in functions
-//  to add and remove data to the storage array, even though you were asked not to use any built-in
-//  functions yourself.  That is okay, it was done that way to help you focus only on the critical
-//  details necessary to learn the self-adjusting array concept.
+  // Hide method from for-in loops
+  //
+  Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+}
 //
-// Your new objective is to re-implement the .add(), .insert(), and .remove() functions from scratch,
-//  without using any build-in functions.  You can use your previous implementation as reference.
-//  We've partially implemented a .resize() function.  You'll also change it to either increase the
-//  storage capacity, or decrease it depending on the operation.
-//
-//   [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
-//         to increase or decrease capacity.  Either double, or halve, as-needed.
-//   [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
-//   [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
-//   [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
-//
-// NOTE: Don't worry about edge-cases, error checking, or bounds checking
-// NOTE: There shouldn't be any built-in functions in when completed
-//
-// BONUS: Only complete this after the others.
-//
-//   [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
-//         the differences.
-//   [ ] Add a couple more items, and log them again and observe.
-//   [ ] Remove a few until (capacity - 3).  Log them again and observe.
-//   [ ] Explain why they do not match.
-//      [ ] Explain why that is okay.
-//
+// Ignore that function
+
+
+/*
+  Previously, in L1 you enhanced a partially written vector to resize and maintain an accurate length.
+   You may have noticed that the .add(), .insert(), and .remove() functions used built-in functions
+   to add and remove data to the storage array, even though you were asked not to use any built-in
+   functions yourself.  That is okay, it was done that way to help you focus only on the critical
+   details necessary to learn the self-adjusting array concept.
+
+  Your new objective is to re-implement the .add(), .insert(), and .remove() functions from scratch,
+   without using any build-in functions.  You can use your previous implementation as reference.
+   We've partially implemented a .resize() function.  You'll also change it to either increase the
+   storage capacity, or decrease it depending on the operation.
+
+    [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
+          to increase or decrease capacity.  Either double, or halve, as-needed.  Don't reduce lower
+          than the min capacity.
+    [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
+    [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
+    [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
+
+  BONUS: Only complete this after the others.
+
+    [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
+          the differences.
+    [ ] Add a couple more items, and log them again and observe.
+    [ ] Remove a few until (capacity - 3).  Log them again and observe.
+    [ ] Be able to explain why they do not match.
+    [ ] Be able to explain why that is okay.
+
+  NOTE: Don't worry about edge-cases, error checking, or bounds checking
+  NOTE: There shouldn't be any built-in functions in when completed
+  NOTE: Satisfy all the tests.  Do not modify or comment of them out
+
+*/
 
 var Vector = function(initialCapacity, maxCapacity) {
-  this.storage = [];
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
+  this.minCapacity = this.capacity;       // Don't reduce below this value
   this.max = maxCapacity || 1 << 5;       // Default max vector size to 32
   this.length = 0;
+
+  this.storage = new Array(this.capacity);
 };
 
 
@@ -141,7 +148,7 @@ console.log("Initialize");
 console.log("  v.length should be 0: " + (v.length === 0));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
 console.log("  v.max should be 32: " + (v.max === 32));
-console.log("  v.storage should be []: " + (v.storage.equals([])));
+console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
 
 console.log("Add 3");
 v.add(0);
@@ -190,13 +197,14 @@ console.log("Remove the first");
 v.remove(0);
 console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
 console.log("  v.length should be 6: " + (v.length === 6));
-console.log("  v.capacity should be 16: " + (v.capacity === 16));
-
-console.log("Remove all but 2");
-v.remove();
-v.remove();
-v.remove();
-v.remove();
-console.log("  v.toArray() should be [1, 3]: " + (v.toArray().equals([1, 3])));
-console.log("  v.length should be 2: " + (v.length === 2));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
+
+console.log("Insert one at the beginning");
+v.insert(0, 0);
+console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+
+console.log("Remove from beginning");
+v.remove(0);
+console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+
+
