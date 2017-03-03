@@ -129,6 +129,6 @@ Set.prototype.difference = function(B) {
 };
 
 
-Set.prottype.isSubset = function(B) {
+Set.prototype.isSubset = function(B) {
   // ...
 };
