@@ -133,6 +133,7 @@ function findIndex(a, value) {
 
 console.log("findIndex...");
 console.log("  findIndex('three') should be 3: " + (findIndex(a4, "three") === 3));
+console.log("  findIndex('nine') should be null: " + (findIndex(a4, "nine") === null));
 
 
 // [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
@@ -148,6 +149,7 @@ console.log("findNthLastOdd...");
 console.log("  findNthLastOdd(a5, 1) should be 11: " + (findNthLastOdd(a5, 1) === 11));
 console.log("  findNthLastOdd(a5, 2) should be 9: " + (findNthLastOdd(a5, 2) === 9));
 console.log("  findNthLastOdd(a5, 4) should be 1: " + (findNthLastOdd(a5, 4) === 1));
+console.log("  findNthLastOdd(a5, 18) should be null: " + (findNthLastOdd(a5, 18) === null));
 
 
 // [ ] Select a range of values in any array, return the average of the values of the range
