@@ -11,10 +11,10 @@
     [ ] Complete the implementation of a Dequeue class
     [ ] .storage property to hold the items on the queue using a dynamic array (or
           vector).
-    [ ] .queue() function to push a value from the back
-    [ ] .dequeue() function to push a value from the back
+    [ ] .queue() function to queue a value from the back
+    [ ] .dequeue() function to dequeue a value from the back
     [ ] .push() function to push a value from the front
-    [ ] .pop() function to push a value from the front
+    [ ] .pop() function to pop a value from the front
     [ ] .length property to return the total size used
 
     [ ] The storage cannot resize more than max or less than min.
