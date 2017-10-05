@@ -74,11 +74,16 @@ if(!Array.prototype.equals) {
    functionality.  When the vector length has reached capacity, it must double in size.  Complete the
    following tasks:
 
-    [ ] .resize() function to expand when needed
-    [ ] .add() function to expand when needed
-    [ ] .insert() function to expand when needed
+   1. [ ] .resize() function that expands the storage space
+      [ ] .add() function to expand when needed
 
-    [ ] .add(), .insert(), .remove() must adjust the length appropriately
+   2. [ ] .insert() function to expand when needed
+
+
+   Always:
+
+    [ ] .add(), .insert(), .remove() must maintain the .length field appropriately
+
 
   NOTE: Don't worry about edge-cases, error checking, or bounds checking
   NOTE: Some built-in functions are already used.  Do not use any in the code you add
@@ -87,10 +92,10 @@ if(!Array.prototype.equals) {
 */
 
 var Vector = function(initialCapacity, maxCapacity) {
-  this.storage = [];
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
-  this.max = maxCapacity || 1 << 5;       // Default max vector size to 32
   this.length = 0;
+
+  this.storage = [];
 };
 
 
@@ -147,7 +152,6 @@ var v = new Vector();
 console.log("Initialize");
 console.log("  v.length should be 0: " + (v.length === 0));
 console.log("  v.capacity should be 8: " + (v.capacity === 8));
-console.log("  v.max should be 32: " + (v.max === 32));
 console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
 
 console.log("Add 3");
@@ -177,10 +181,14 @@ console.log("Set v[2] = 15");
 v.set(2, 15);
 console.log("  v.get(2) should be 15: " + (v.get(2) === 15));
 
-console.log("Add 4 more");
+console.log("Add 3 more");
 v.add(5);
 v.add(6);
 v.add(7);
+console.log("  v.length should be 8: " + (v.length === 8));
+console.log("  v.capacity should be 8: " + (v.capacity === 8));
+
+console.log("Add 1 more to fill capacity");
 v.add(8);
 console.log("  v.length should be 9: " + (v.length === 9));
 console.log("  v.capacity should be 16: " + (v.capacity === 16));
@@ -206,6 +214,40 @@ console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray(
 console.log("Remove from beginning");
 v.remove(0);
 console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+
+v = new Vector();
+
+console.log("Test inserting <capacity> items leaves the storage size at <capacity>");
+console.log("  Re-Initialize");
+console.log("    v.length should be 0: " + (v.length === 0));
+console.log("    v.capacity should be 8: " + (v.capacity === 8));
+console.log("    v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
+
+console.log("  Add 6");
+v.add(0);
+v.add(1);
+v.add(2);
+v.add(3);
+v.add(4);
+v.add(5);
+console.log("    v.length should be 6: " + (v.length === 6));
+console.log("    v.toArray() should be [0, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 1, 2, 3, 4, 5])));
+
+console.log("  Insert 1");
+v.insert(1, 6);
+console.log("    v.toArray() should be [0, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 6, 1, 2, 3, 4 ,5])));
+
+console.log("  Insert 1 More");
+v.insert(1, 7);
+console.log("    v.length should be 8: " + (v.length === 8));
+console.log("    v.storage.length should be 8: " + (v.storage.length === 8));
+console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 4 ,5])));
+
+console.log("  Insert 1 Beyond Initial Capactity of 8");
+v.insert(6, 8);
+console.log("    v.length should be 9: " + (v.length === 9));
+console.log("    v.storage.length should be 16: " + (v.storage.length === 16));
+console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 8, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 8, 4 ,5])));
 
 
 

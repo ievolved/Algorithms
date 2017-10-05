@@ -60,22 +60,29 @@ if(!Array.prototype.equals) {
    We've partially implemented a .resize() function.  You'll also change it to either increase the
    storage capacity, or decrease it depending on the operation.
 
-    [ ] .resize() function to expand/reduce when needed.  HINT: Use a desired length to decide whether
-          to increase or decrease capacity.  Either double, or halve, as-needed.  Don't reduce lower
-          than the min capacity.
-    [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
-    [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
-    [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
+  Complete the following:
+
+   1. [ ] .resize() must double of half the storage as-needed.  When halving, you can use the formula
+           (floor(maxCapacity / 2).  IDEA: It might be better to supply an argument that indicates
+           the desired storage size, and whether its an add() or remove() operation requesting it.
+           Or not.  It's up to you.
+      [ ] Don't expand beyond maxCapacity or below minCapacity.
+
+   2. [ ] .add() re-implement with no built-in function calls.  Resize if necessary.
+      [ ] .insert() re-implement with no built-in function calls.  Resize if necessary.
+      [ ] .remove() re-implement with no built-in function calls.  Resize if necessary.
+
 
   BONUS: Only complete this after the others.
 
-    [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
-          the differences.
-    [ ] Add a couple more items, and log them again and observe.
-    [ ] Remove a few until (capacity - 3).  Log them again and observe.
-    [ ] Be able to explain why they do not match.
-    [ ] Be able to explain why that is okay.
+   3. [ ] After adding (capacity - 1) items, log the v.storage array.  Also the v.toArray().  Observe
+           the differences.
+      [ ] Add a couple more items, and log them again and observe.
+      [ ] Remove a few until (capacity - 3).  Log them again and observe.
+      [ ] Be able to explain why they do not match.
+      [ ] Be able to explain why that is okay.
 
+  NOTE: Try to re-use functions when possible, don't repeat yourself (DRY)
   NOTE: Don't worry about edge-cases, error checking, or bounds checking
   NOTE: There shouldn't be any built-in functions in when completed
   NOTE: Satisfy all the tests.  Do not modify or comment of them out
@@ -142,69 +149,182 @@ Vector.prototype.toArray = function() {
 
 
 
-var v = new Vector();
+var run = testRunner(20);
+run(true, function() {
+  var v = new Vector();
 
-console.log("Initialize");
-console.log("  v.length should be 0: " + (v.length === 0));
-console.log("  v.capacity should be 8: " + (v.capacity === 8));
-console.log("  v.max should be 32: " + (v.max === 32));
-console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
+  run(true, function() {
+    console.log("Initialize");
+    console.log("  v.length should be 0: " + (v.length === 0));
+    console.log("  v.capacity should be 8: " + (v.capacity === 8));
+    console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
+  });
 
-console.log("Add 3");
-v.add(0);
-v.add(1);
-v.add(2);
-console.log("  v.length should be 3: " + (v.length === 3));
-console.log("  v.toArray() should be [0, 1, 2]: " + (v.toArray().equals([0, 1, 2])));
+  run(true, function() {
+    console.log("Add 3");
+    v.add(0);
+    v.add(1);
+    v.add(2);
+    console.log("  v.length should be 3: " + (v.length === 3));
+    console.log("  v.toArray() should be [0, 1, 2]: " + (v.toArray().equals([0, 1, 2])));
+  });
 
-console.log("Add 2 more");
-v.add(3);
-v.add(4);
-console.log("  v.length should be 5: " + (v.length === 5));
-console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
+  run(false, function() {
+    console.log("Add 2 more");
+    v.add(3);
+    v.add(4);
+    console.log("  v.length should be 5: " + (v.length === 5));
+    console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
+  });
 
-console.log("Insert 1 at v[3]");
-v.insert(3, 2.5);
-console.log("  v.length should be 6: " + (v.length === 6));
-console.log("  v.toArray() should be [0, 1, 2, 2.5, 3, 4]: " + (v.toArray().equals([0, 1, 2, 2.5, 3, 4])));
+  run(false, function() {
+    console.log("Insert 1 at v[3]");
+    v.insert(3, 2.5);
+    console.log("  v.length should be 6: " + (v.length === 6));
+    console.log("  v.toArray() should be [0, 1, 2, 2.5, 3, 4]: " + (v.toArray().equals([0, 1, 2, 2.5, 3, 4])));
+  });
 
-console.log("Remove v[3]");
-v.remove(3);
-console.log("  v.length should be 5: " + (v.length === 5));
-console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
+  run(false, function() {
+    console.log("Remove v[3]");
+    v.remove(3);
+    console.log("  v.length should be 5: " + (v.length === 5));
+    console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
+  });
 
-console.log("Set v[2] = 15");
-v.set(2, 15);
-console.log("  v.get(2) should be 15: " + (v.get(2) === 15));
+  run(false, function() {
+    console.log("Set v[2] = 15");
+    v.set(2, 15);
+    console.log("  v.get(2) should be 15: " + (v.get(2) === 15));
+  });
 
-console.log("Add 4 more");
-v.add(5);
-v.add(6);
-v.add(7);
-v.add(8);
-console.log("  v.length should be 9: " + (v.length === 9));
-console.log("  v.capacity should be 16: " + (v.capacity === 16));
+  run(false, function() {
+    console.log("Add 3 more");
+    v.add(5);
+    v.add(6);
+    v.add(7);
+    console.log("  v.length should be 8: " + (v.length === 8));
+    console.log("  v.capacity should be 8: " + (v.capacity === 8));
+  });
 
-console.log("Remove from the end");
-v.remove();
-console.log("  v.toArray() should be [0, 1, 15, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 15, 3, 4, 5, 6, 7])));
+  run(false, function() {
+    console.log("Add 1 more to fill capacity");
+    v.add(8);
+    console.log("  v.length should be 9: " + (v.length === 9));
+    console.log("  v.capacity should be 16: " + (v.capacity === 16));
+  });
 
-console.log("Remove v[2]");
-v.remove(2);
-console.log("  v.toArray() should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+  run(false, function() {
+    console.log("Remove from the end");
+    v.remove();
+    console.log("  v.toArray() should be [0, 1, 15, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 15, 3, 4, 5, 6, 7])));
+  });
 
-console.log("Remove the first");
-v.remove(0);
-console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
-console.log("  v.length should be 6: " + (v.length === 6));
-console.log("  v.capacity should be 8: " + (v.capacity === 8));
+  run(false, function() {
+    console.log("Remove v[2]");
+    v.remove(2);
+    console.log("  v.toArray() should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+  });
 
-console.log("Insert one at the beginning");
-v.insert(0, 0);
-console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+  run(false, function() {
+    console.log("Remove the first");
+    v.remove(0);
+    console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
+    console.log("  v.length should be 6: " + (v.length === 6));
+    console.log("  v.capacity should be 8: " + (v.capacity === 8));
+  });
 
-console.log("Remove from beginning");
-v.remove(0);
-console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+  run(false, function() {
+    console.log("Insert one at the beginning");
+    v.insert(0, 0);
+    console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
+  });
+
+  run(false, function() {
+    console.log("Remove from beginning");
+    v.remove(0);
+    console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
+  });
+
+  v = new Vector();
+
+  run(false, function() {
+    console.log("Test inserting <capacity> items leaves the storage size at <capacity>");
+    console.log("  Re-Initialize");
+    console.log("    v.length should be 0: " + (v.length === 0));
+    console.log("    v.capacity should be 8: " + (v.capacity === 8));
+    console.log("    v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
+  });
+
+  run(false, function() {
+    console.log("  Add 6");
+    v.add(0);
+    v.add(1);
+    v.add(2);
+    v.add(3);
+    v.add(4);
+    v.add(5);
+    console.log("    v.length should be 6: " + (v.length === 6));
+    console.log("    v.toArray() should be [0, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 1, 2, 3, 4, 5])));
+  });
+
+  run(false, function() {
+    console.log("  Insert 1");
+    v.insert(1, 6);
+    console.log("    v.toArray() should be [0, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 6, 1, 2, 3, 4, 5])));
+  });
+
+  run(false, function() {
+    console.log("  Insert 1 More");
+    v.insert(1, 7);
+    console.log("    v.length should be 8: " + (v.length === 8));
+    console.log("    v.storage.length should be 8: " + (v.storage.length === 8));
+    console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 4, 5])));
+  });
+
+  run(false, function() {
+    console.log("  Insert 1 Beyond Initial Capactity of 8");
+    v.insert(6, 8);
+    console.log("    v.length should be 9: " + (v.length === 9));
+    console.log("    v.storage.length should be 16: " + (v.storage.length === 16));
+    console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 8, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 8, 4, 5])));
+  });
+
+  run(false, function() {
+    console.log("Test removing to half capacity reduces storage to half");
+    v.remove();
+    console.log("  v.remove() should be [0, 7, 6, 1, 2, 3, 8, 4]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 8, 4])));
+    console.log("  v.length should be 8: " + (v.length === 8));
+    console.log("  v.capacity should be 8: " + (v.capacity === 8));
+    console.log("  v.storage.length should be 8: " + (v.storage.length === 8));
+  });
+});
+
+run(true, null);
 
 
+function testRunner(totalTests) {
+  totalTests -= 1; // remove one for the main test runner
+  var count = -1;
+
+  return function(go, test) {
+    if (!go) {
+      return;
+    }
+
+    if (test != null) {
+      count += 1;
+      test();
+    }
+    else {
+      console.log("");
+      console.log("");
+
+      if (count === totalTests) {
+        console.log("All tests were executed.");
+      }
+      else {
+        console.log((totalTests - count) + " of " + totalTests + " tests were not executed.");
+      }
+    }
+  }
+}
