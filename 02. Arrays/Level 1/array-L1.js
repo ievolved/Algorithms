@@ -120,7 +120,11 @@ function median(a) {
 console.log("median...");
 console.log("  median(a2) should be 6: " + (median(a2) === 6));
 console.log("  median(a3) should be 13: " + (median(a3) === 13));
-console.log("  median(a0) should be 15.09: " + (median(a0) === 15.09));
+console.log("  median(data3) should be 10.045: " + (median(data3.sort(numberSort)) === 10.045));
+
+function numberSort(a, b) {
+  return a - b;
+}
 
 
 // [ ] Return the index the value specified, or null if not found
