@@ -164,18 +164,18 @@ Vector.prototype.toArray = function() {
 
 
 (function() {
-  var run = testRunner(23);
-  run(true, function () {
+  var test = testRunner(23);
+  test(true, function () {
     var v = new Vector();
 
-    run(true, function () {
+    test(true, function () {
       console.log("Initialize");
       console.log("  v.length should be 0: " + (v.length === 0));
       console.log("  v.capacity should be 8: " + (v.capacity === 8));
       console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
     });
 
-    run(true, function () {
+    test(true, function () {
       console.log("Add 3");
       v.add(0);
       v.add(1);
@@ -184,7 +184,7 @@ Vector.prototype.toArray = function() {
       console.log("  v.toArray() should be [0, 1, 2]: " + (v.toArray().equals([0, 1, 2])));
     });
 
-    run(true, function () {
+    test(true, function () {
       console.log("Add 2 more");
       v.add(3);
       v.add(4);
@@ -192,27 +192,27 @@ Vector.prototype.toArray = function() {
       console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
     });
 
-    run(true, function () {
+    test(true, function () {
       console.log("Insert 1 at v[3]");
       v.insert(3, 2.5);
       console.log("  v.length should be 6: " + (v.length === 6));
       console.log("  v.toArray() should be [0, 1, 2, 2.5, 3, 4]: " + (v.toArray().equals([0, 1, 2, 2.5, 3, 4])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Remove v[3]");
       v.remove(3);
       console.log("  v.length should be 5: " + (v.length === 5));
       console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Set v[2] = 15");
       v.set(2, 15);
       console.log("  v.get(2) should be 15: " + (v.get(2) === 15));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Add 3 more");
       v.add(5);
       v.add(6);
@@ -221,26 +221,26 @@ Vector.prototype.toArray = function() {
       console.log("  v.capacity should be 8: " + (v.capacity === 8));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Add 1 more to fill capacity");
       v.add(8);
       console.log("  v.length should be 9: " + (v.length === 9));
       console.log("  v.capacity should be 16: " + (v.capacity === 16));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Remove from the end");
       v.remove();
       console.log("  v.toArray() should be [0, 1, 15, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 15, 3, 4, 5, 6, 7])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Remove v[2]");
       v.remove(2);
       console.log("  v.toArray() should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Remove the first");
       v.remove(0);
       console.log("  v.toArray() should be [1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([1, 3, 4, 5, 6, 7])));
@@ -248,13 +248,13 @@ Vector.prototype.toArray = function() {
       console.log("  v.capacity should be 8: " + (v.capacity === 8));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Insert one at the beginning");
       v.insert(0, 0);
       console.log("  Insert 0 at v[0] should be [0, 1, 3, 4, 5, 6, 7]: " + (v.toArray().equals([0, 1, 3, 4, 5, 6, 7])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Remove from beginning");
       v.remove(0);
       console.log("  v.remove(0) should be [1, 3, 4, 5, 6, 7]: " + v.toArray().equals([1, 3, 4, 5, 6, 7]));
@@ -262,7 +262,7 @@ Vector.prototype.toArray = function() {
 
     v = new Vector();
 
-    run(false, function () {
+    test(false, function () {
       console.log("Test inserting <capacity> items leaves the storage size at <capacity>");
       console.log("  Re-Initialize");
       console.log("    v.length should be 0: " + (v.length === 0));
@@ -270,7 +270,7 @@ Vector.prototype.toArray = function() {
       console.log("    v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("  Add 6");
       v.add(0);
       v.add(1);
@@ -282,13 +282,13 @@ Vector.prototype.toArray = function() {
       console.log("    v.toArray() should be [0, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 1, 2, 3, 4, 5])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("  Insert 1");
       v.insert(1, 6);
       console.log("    v.toArray() should be [0, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 6, 1, 2, 3, 4, 5])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("  Insert 1 More");
       v.insert(1, 7);
       console.log("    v.length should be 8: " + (v.length === 8));
@@ -296,7 +296,7 @@ Vector.prototype.toArray = function() {
       console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 4, 5])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("  Insert 1 Beyond Initial Capactity of 8");
       v.insert(6, 8);
       console.log("    v.length should be 9: " + (v.length === 9));
@@ -304,7 +304,7 @@ Vector.prototype.toArray = function() {
       console.log("    v.toArray() should be [0, 7, 6, 1, 2, 3, 8, 4, 5]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 8, 4, 5])));
     });
 
-    run(false, function () {
+    test(false, function () {
       console.log("Test removing to half capacity reduces storage to half");
       v.remove();
       console.log("  v.remove() should be [0, 7, 6, 1, 2, 3, 8, 4]: " + (v.toArray().equals([0, 7, 6, 1, 2, 3, 8, 4])));
@@ -314,14 +314,14 @@ Vector.prototype.toArray = function() {
       console.log(v.storage);
     });
 
-    run(false, function() {
+    test(false, function() {
       console.log("Find a value");
       console.log("  v.find(3) should be index 5: " + (v.find(3) === 5));
       console.log("  v.contains(7) should be true: " + (v.contains(7)));
     });
 
 
-    run(false, function() {
+    test(false, function() {
       console.log("Index out of range validations when not empty");
       var test_result;
       try {
@@ -428,7 +428,7 @@ Vector.prototype.toArray = function() {
       }
     });
 
-    run(false, function() {
+    test(false, function() {
       console.log("Expanding beyond capacity");
       console.log("  capacity should be 8: " + (v.capacity === 8));
 
@@ -453,7 +453,7 @@ Vector.prototype.toArray = function() {
     });
   });
 
-  run(true, null);
+  test(true, null);
 
 
   function testRunner(totalTests) {
