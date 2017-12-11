@@ -62,7 +62,7 @@ if(!Array.prototype.equals) {
   Collections are dynamic arrays and go by different names and may have slightly different nuanced
    behaviors between them but they are essentially the same idea.
 
-    Dynamic Array    // A self-adjusting array
+    Dynamic Array     // A self-adjusting array
     Vector           // Not to be confused with a 2D/3D graphics vector
     List             // Not to be confused with a LinkedList
     Set
@@ -99,7 +99,6 @@ var Vector = function(initialCapacity, maxCapacity) {
 };
 
 
-
 Vector.prototype.insert = function(index, value) {
   this.storage.splice(index, 0, value);
 };
@@ -120,11 +119,15 @@ Vector.prototype.remove = function(index) {
 };
 
 
+// x = Vector.get(5) is the same as x = array[5];
+//
 Vector.prototype.get = function(index) {
   return this.storage[index];
 };
 
 
+// Vector.set(5, value) is the same as array[5] = value;
+//
 Vector.prototype.set = function(index, value) {
   this.storage[index] = value;
 };
@@ -150,14 +153,14 @@ var test = testRunner(19);
 test(true, function() {
   var v = new Vector();
 
-  test(true, function() {
+  test(false, function() {
     console.log("Initialize");
     console.log("  v.length should be 0: " + (v.length === 0));
     console.log("  v.capacity should be 8: " + (v.capacity === 8));
     console.log("  v.storage should be [undefined, ... x8]: " + (v.storage.length === v.capacity));
   });
 
-  test(true, function() {
+  test(false, function() {
     console.log("Add 3");
     v.add(0);
     v.add(1);
@@ -174,7 +177,7 @@ test(true, function() {
     console.log("  v.toArray() should be [0, 1, 2, 3, 4]: " + (v.toArray().equals([0, 1, 2, 3, 4])));
   });
 
-  test(false, function() {
+  test(true, function() {
     console.log("Insert 1 at v[3]");
     v.insert(3, 2.5);
     console.log("  v.length should be 6: " + (v.length === 6));
