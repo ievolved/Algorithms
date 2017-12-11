@@ -136,7 +136,7 @@ function average(a) {
 //    average of the two middle values.  For more information on the median algorithm, you
 //    may consult Wikipedia.  Use the arrays `a2, a3, and a0` as test input.
 //
-//  https://en.wikipedia.org/wiki/Median
+//   https://en.wikipedia.org/wiki/Median
 //
 var a2 = [1,2,4,4,6,7,8,9,12];
 var a3 = [4,5,9,10,11,15,22,20,21,21];
@@ -167,17 +167,17 @@ function findIndex(a, value) {
 
 
 
-// 6. [ ] Return index of nth last odd in any array, 1 being the fist, etc., null = not found
+// 6. [ ] Return index of nth last odd in any array, 1 being the first, etc., null = not found
 //     [ ] Use only a single iteration
 //
-//  This one is a little trickier than the others.  In this case, we'll looking for the index
+//  This one is a little trickier than the others.  In this case, we'll be looking for the index
 //   position of the nth last odd in the list.  So, findNthLastOdd(1) should return 11.  This
 //   is because `5` is the 1st odd from the end, and it is at the 11th index position in the
 //   array.  Use the array `a5` as test input.
 //
 var a5 = [4, 3, 8, 8, 6, 9, 10, 12, 10, 9, 0, 5, 16, 2];
 
-function findNthLastOdd(a, n) {
+function findNthLastOdd(a, nth) {
   // return nth last add
 }
 
@@ -189,6 +189,8 @@ function findNthLastOdd(a, n) {
 //
 //  Given a start index and end index indicating a sub-range within the array, return the
 //   average value of that sub-range.  Use the array `a6` as test input.
+//
+//   HINT: See if you can reuse any functions you completed earlier in this file
 //
 var a6 = [0, 1, 2, 3, 4, 5, 10, 15, 23, 54, 22, 1, 8, 4, 2, 2, 2, 0, 1];
 
