@@ -62,7 +62,7 @@ if(!Array.prototype.equals) {
 
   Complete the following:
 
-   1. [ ] .resize() must double of half the storage as-needed.  When halving, you can use the formula
+   1. [ ] .resize() must double or half the storage as-needed.  When halving, you can use the formula
            (floor(maxCapacity / 2).  IDEA: It might be better to supply an argument that indicates
            the desired storage size, and whether its an add() or remove() operation requesting it.
            Or not.  It's up to you.

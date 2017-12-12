@@ -91,7 +91,7 @@ if(!Array.prototype.equals) {
 
 */
 
-var Vector = function(initialCapacity, maxCapacity) {
+var Vector = function(initialCapacity) {
   this.capacity = initialCapacity || 8;   // Default array size initially to 8 elements
   this.length = 0;
 
